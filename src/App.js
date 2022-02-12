@@ -89,10 +89,10 @@ class App extends Component {
     this.setState({searchInput: event.target.value})
   }
 
-  onDeleteSearch = uniqueNo => {
+  onDeleteSearch = id => {
     const {searchDetailsList} = this.state
     const filteredSearchData = searchDetailsList.filter(
-      eachSearch => eachSearch.uniqueNo !== uniqueNo,
+      eachSearch => eachSearch.id !== id,
     )
     this.setState({searchDetailsList: filteredSearchData})
   }
@@ -100,7 +100,7 @@ class App extends Component {
   render() {
     const {searchInput, searchDetailsList} = this.state
     const searchResults = searchDetailsList.filter(eachSearch =>
-      eachSearch.title.includes(searchInput),
+      eachSearch.title.toLowerCase().includes(searchInput.toLowerCase()),
     )
 
     return (
@@ -110,7 +110,7 @@ class App extends Component {
             <div className="history-container">
               <img
                 src="https://assets.ccbp.in/frontend/react-js/history-website-logo-img.png"
-                alt="domain logo"
+                alt="app logo"
                 className="domain-logo"
               />
             </div>
@@ -139,6 +139,7 @@ class App extends Component {
             ))}
           </ul>
         </div>
+        ) )
       </>
     )
   }

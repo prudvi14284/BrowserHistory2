@@ -2,21 +2,21 @@ import './index.css'
 
 const BrowserHistory = props => {
   const {searchDetails, onDeleteSearch} = props
-  const {timeAccessed, logoUrl, title, domainUrl, uniqueNo} = searchDetails
+  const {timeAccessed, logoUrl, title, domainUrl, id} = searchDetails
 
   const onDelete = () => {
-    onDeleteSearch(uniqueNo)
+    onDeleteSearch(id)
   }
 
   return (
     <li className="search-card-container">
       <div className="search-details-container">
         <p className="time-accessed">{timeAccessed}</p>
-        <img src={logoUrl} className="logo-url" alt="logo url" />
-        <h1 className="title">{title}</h1>
+        <img src={logoUrl} className="logo-url" alt="domain logo" />
+        <p className="title">{title}</p>
         <p className="domain-url">{domainUrl}</p>
       </div>
-      <button type="button" className="delete-button" onChange={onDelete}>
+      <button type="button" className="delete-button" onClick={onDelete}>
         <img
           src="https://assets.ccbp.in/frontend/react-js/delete-img.png"
           alt="delete"
